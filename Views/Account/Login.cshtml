@@ -1,0 +1,40 @@
+﻿@model HMSMVC.Models.RequestModels.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+    <div class="wrapper">
+        <div class="title">
+            Login Form
+        </div>
+    <form asp-action="Login" asp-controller="Account" method="post">
+            <div class="field">
+                <input asp-for="Email" type="text" required>
+                <label asp-for="Email">Email Address</label>
+            </div>
+            <div class="field">
+                <input asp-for="Password" type="password" required>
+                <label asp-for="Password">Password</label>
+            </div>
+            <div class="content">
+                <div class="checkbox">
+                    <input asp-for="RememberMe" type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div class="pass-link">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+            <div class="field">
+                <input type="submit" value="Login" asp-action="LoginPage" asp-controller="Account">
+            </div>
+            <div class="signup-link">
+                Not a member? <a href="/account/registration">Signup now</a>
+            </div>
+        </form>
+    </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
